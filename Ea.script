@@ -1,4 +1,4 @@
- 
+
 if not LPH_OBFUSCATED then
   LPH_JIT = function(...) return ... end
   LPH_JIT_MAX = function(...) return ... end
@@ -10,9 +10,9 @@ if not LPH_OBFUSCATED then
   LPH_HOOK_FIX = function(...) return ... end
   LPH_CRASH = function() return print(debug.traceback()) end
   end;
- 
+
   ------------------------------------------------------------------------------------
- 
+
   local PipePistolDerect = require(game.ReplicatedStorage.ItemConfigs.PipePistol)
   local PipeSMGDerect = require(game.ReplicatedStorage.ItemConfigs.PipeSMG)
   local USPDerect = require(game.ReplicatedStorage.ItemConfigs.USP)
@@ -34,13 +34,13 @@ if not LPH_OBFUSCATED then
   local BandageDerect = require(game.ReplicatedStorage.ItemConfigs.Bandage)
   local CrowbarDerect = require(game.ReplicatedStorage.ItemConfigs.Crowbar)
   local LaserPistolDerect = require(game.ReplicatedStorage.ItemConfigs.LaserPistol)
- 
+
   ------------------------------------------------------------------------------------
- 
+
   --// locals Shit
   local last_updated = "02/22/2023"
   local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
- 
+
   local RepStorage = game:GetService("ReplicatedStorage")
   local workspace = game:GetService("Workspace")
   local userinputservice = game:GetService("UserInputService")
@@ -51,21 +51,21 @@ if not LPH_OBFUSCATED then
   local guiservice = game:GetService("GuiService")
   local SoundService = game:GetService("SoundService")
   local camera = game:GetService("Workspace").Camera;
- 
+
   local Client = game.Players.LocalPlayer
   local Players = game.Players
   local worldToViewportPoint = camera.worldToViewportPoint
- 
+
   local drawing_new = Drawing.new
   local color3_new, color3_fromrgb = Color3.new, Color3.fromRGB
   local vector3_new, vector2_new = Vector3.new, Vector2.new
   local math_huge, math_floor, math_ceil = math.huge, math.floor, math.ceil
   local ray_new = Ray.new
- 
+
   ------------------------------------------------------------------------------------------
- 
+
   --Esp Shit
- 
+
   --// Ore ESP -()
   _G.Shitter = false
   _G.Settings = {
@@ -82,7 +82,7 @@ if not LPH_OBFUSCATED then
       colour = Color3.fromRGB(205, 205, 205),
     },
   }
- 
+
   --// Main ESP -()
   local Config = {
     Esp = {
@@ -100,7 +100,7 @@ if not LPH_OBFUSCATED then
       NamesSize         = 11,
     },
   }
- 
+
   function CreateEsp(Player)
     local Box,BoxOutline,Name,HealthBar,HealthBarOutline = Drawing.new("Square"),Drawing.new("Square"),Drawing.new("Text"),Drawing.new("Square"),Drawing.new("Square")
     local Updater = game:GetService("RunService").RenderStepped:Connect(function()
@@ -163,25 +163,25 @@ if not LPH_OBFUSCATED then
       CreateEsp(i)
     end
   end
- 
+
   game.Workspace.DescendantAdded:Connect(function(i)
   if i:FindFirstChild("Humanoid") and i ~= game.Players.LocalPlayer.Character and i:FindFirstChild("HumanoidRootPart") and i.Head:FindFirstChild("Nametag") then
     CreateEsp(i)
   end
   end)
- 
+
   --------------------------------------------------------------------------------------
- 
+
   --// UI Shit
   local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigHacker123/Library.lua/main/Library.lua'))()
   local SaveManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigHacker123/Library.lua/main/Save%20Manager'))()
   local ThemeManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigHacker123/Library.lua/main/Theme.lua'))()
- 
+
   ------------------------------------------------------------------------------------
- 
+
   wait(0)Library:Notify("Welcome👋: "..game.Players.LocalPlayer.Name.." loading...")
   wait(0)Library:Notify("EA Script Loaded 🔫")
- 
+
   game.Players.PlayerAdded:Connect(function(player)
   if player:IsFriendsWith(game.Players.LocalPlayer.UserId) then
     Library:Notify(("Notification - Friend | User:"..player.DisplayName.. " | Joined"), 6, Color3.fromRGB(0, 255, 60))
@@ -189,7 +189,7 @@ if not LPH_OBFUSCATED then
     Library:Notify(("Notification - Player | User:"..player.DisplayName.. " | Joined"), 3, Color3.fromRGB(0, 255, 60))
   end
   end)
- 
+
   game.Players.PlayerRemoving:Connect(function(player)
   if player:IsFriendsWith(game.Players.LocalPlayer.UserId) then
     Library:Notify(("Notification - Friend | User:"..player.DisplayName.. " | Left"), 6, Color3.fromRGB(255, 0, 0))
@@ -197,13 +197,13 @@ if not LPH_OBFUSCATED then
     Library:Notify(("Notification - Player | User:"..player.DisplayName.. " | Left"), 3, Color3.fromRGB(255, 0, 0))
   end
   end)
- 
+
   --// Create UI
- 
+
   local Version = "Free" --Dev, Premium, Lite, Free--
   local Build = "Free"
   local Color = "#00FF00"
- 
+
   if Build == "Testing" then
     Color = '#0000FF'
     Ver = "1.1"
@@ -220,35 +220,35 @@ if not LPH_OBFUSCATED then
     Color = '#FF0000'
     Ver = "1.0.2"
   end
- 
+
   local Window = Library:CreateWindow({ Size = UDim2.fromOffset(550, 620),
   Title = ".<font color=\"#d17bff\">Ea Script </font> | ".."<font color=\""..Color.."\">"..Build.."</font>".."                                      [v"..Ver.."]",
   Center = true,
   AutoShow = true,
 })
- 
+
 ---------------------------------------------------------------------------------------------------
- 
+
 --Tabs Shit
 local Tabs = {
   CombatTab = Window:AddTab('Combat'),
   VisualsTab = Window:AddTab('Visuals'),
   UISettings = Window:AddTab('UI Settings'),
 }
- 
+
 --------------------------------------------------------------------------------------------------
 --Combat Shit
- 
+
 local AimlockTabBox = Tabs.CombatTab:AddLeftTabbox('Aimbot')
 local AimlockTab = AimlockTabBox:AddTab('Aimbot')
- 
+
 local Camera = workspace.CurrentCamera
- 
+
 --// Aimbot \\--
- 
+
 local Camera = game:GetService("Workspace").Camera;
 local UIS = game:GetService("UserInputService")
- 
+
 local fovcircle2 = Drawing.new("Circle")
 fovcircle2.Visible = false
 fovcircle2.Radius = 0
@@ -257,7 +257,7 @@ fovcircle2.Thickness = 1
 fovcircle2.Filled = false
 fovcircle2.Transparency = 1
 fovcircle2.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
- 
+
 local function viewportPoint(ret, ...)
   if type(ret) == "boolean" then
     local pos, vis = workspace.CurrentCamera:WorldToViewportPoint(...)
@@ -266,45 +266,45 @@ local function viewportPoint(ret, ...)
     return workspace.CurrentCamera:WorldToViewportPoint(ret, ...)
   end
 end
- 
+
 local function GetPlayer()
   local last_distance = math.huge
   local target = nil
- 
+
   for i, v in pairs(workspace:GetChildren()) do
     if v:IsA("Model") and v:FindFirstChild("Humanoid") and v.Name ~= "Player" then
       if v.Humanoid.Health ~= 0 and v.PrimaryPart ~= nil and v:FindFirstChild("Head") then
         local sp, visible = viewportPoint(v:WaitForChild("HumanoidRootPart", math.huge).Position)
         local mouse_loc = UIS:GetMouseLocation()
         local distance = (Vector2.new(mouse_loc.X, mouse_loc.Y) - Vector2.new(sp.X, sp.Y)).Magnitude
- 
+
         local pos = Camera.WorldToViewportPoint(Camera, v.PrimaryPart.Position)
- 
+
         if distance < last_distance and distance < fovcircle2.Radius then
- 
+
           last_distance = distance
           target = v
- 
+
         end
       end
     end
   end
- 
+
   return target
 end
- 
+
 local Sensitivity = 1
 local LoopBad = nil
 MovementPrediction = false
 local AimbotSensitivity = 1
 local Mouse = game.Players.LocalPlayer:GetMouse()
- 
+
 local function AimToPosition(Position)
   local AimX = ((Position.X - Mouse.X) + 0) / AimbotSensitivity
   local AimY = ((Position.Y - Mouse.Y - 36) + 0) / AimbotSensitivity
   return AimX, AimY
 end
- 
+
 local AimbotEnabled = false
 local RunService = game:GetService("RunService")
 local OldPosition = nil
@@ -315,7 +315,7 @@ local function CalculateVelocity(Before, After, deltaTime)
   -- // Return
   return Velocity
 end
- 
+
 local function viewportPoint(ret, ...)
   if type(ret) == "boolean" then
     local pos, vis = workspace.CurrentCamera:WorldToViewportPoint(...)
@@ -324,7 +324,7 @@ local function viewportPoint(ret, ...)
     return workspace.CurrentCamera:WorldToViewportPoint(ret, ...)
   end
 end
- 
+
 local PredictionSmoothness = 15
 local BoostAim = UIS.MouseDeltaSensitivity
 local DefaultUIS = UIS.MouseDeltaSensitivity
@@ -332,7 +332,7 @@ local Middle = game.Workspace.Ignore.LocalCharacter.Middle
 local BulletDropPrediction = 0
 local Cheese2 = "Head"
 local Key = Enum.UserInputType.MouseButton2
- 
+
 game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
 if input.UserInputType == Key then
   Aiming = true
@@ -348,7 +348,7 @@ if input.UserInputType == Key then
       p = TargetRN
     end
     if not p then return end
- 
+
     if p ~= nil then
       UIS.MouseDeltaSensitivity = BoostAim
       local CurrentPosition = p.HumanoidRootPart.Position
@@ -368,9 +368,9 @@ if input.UserInputType == Key then
           Prediction = Velocity * (PredictionSmoothness / 15) * (Middle.Position - p.HumanoidRootPart.Position).magnitude / 100
         end
       end
- 
+
       OldPosition = CurrentPosition
- 
+
       if Cheese2 == "Head" then
         local AimAt = Camera:WorldToViewportPoint(p.Head.Position + Vector3.new(0, 0.5 * 196.2 * BulletDropPrediction * BulletDropPrediction, 0) + Prediction)
         mousemoverel(AimToPosition(Vector2.new(AimAt.X, AimAt.Y)))
@@ -388,9 +388,9 @@ if input.UserInputType == Key then
   end)
 end
 end)
- 
+
 local OldDelta = UIS.MouseDeltaSensitivity
- 
+
 UIS.InputEnded:Connect(function(input, gameProcessedEvent)
 if input.UserInputType == Key then
   Aiming = false
@@ -406,7 +406,7 @@ if input.UserInputType == Key then
   TargetRN = nil
 end
 end)
- 
+
 AimlockTab:AddToggle('Enabledaz69', {
   Text = 'Enabled',
   Default = false, -- Default value (true / false)
@@ -420,11 +420,11 @@ NoUI = false,
 }):OnChanged(function(x)
 AimbotEnabled = x
 end)
- 
+
 AimlockTab:AddSlider('AimlockSmoothness_Slider', {Text = 'Smoothness', Suffix = "%", Default = 1, Min = 0.1, Max = 10, Rounding = 1, Compact = true,}):OnChanged(function(aimbotsmoothnesvalue)
 AimbotSensitivity = aimbotsmoothnesvalue
 end)
- 
+
 AimlockTab:AddToggle('Prediction_Enabled', {
 Text = 'Prediction',
 Default = false, -- Default value (true / false)
@@ -432,40 +432,40 @@ Tooltip = 'Enables Prediction', -- Information shown when you hover over the tog
 }):OnChanged(function(x)
 MovementPrediction = x
 end)
- 
+
 AimlockTab:AddSlider('Aimbot_Prediction', {Text = 'Prediction Ammount', Suffix = "%", Default = 0, Min = 0, Max = 5, Rounding = 1, Compact = true,}):OnChanged(function(a)
 PredictionSmoothness = a
 end)
- 
+
 AimlockTab:AddDivider()
- 
+
 AimlockTab:AddToggle('DrawFov_Sus', {Text = 'Draw Fov', Default = false}):AddColorPicker("DrawFov_Color", {Default = Color3.fromRGB(255,255,255)}):OnChanged(function(x)
 fovcircle2.Visible = x
 end)
- 
+
 Options.DrawFov_Color:OnChanged(function(valuefov)
 fovcircle2.Color = valuefov
 end)
- 
+
 AimlockTab:AddSlider('AimlockRadius_Slider', {Text = 'FOV Size', Suffix = "px", Default = 0, Min = 0, Max = 300, Rounding = 0, Compact = true,}):OnChanged(function(a)
 fovcircle2.Radius = a
 end)
- 
+
 AimlockTab:AddDropdown('Aimlock_Part', {Values = {'Head', 'UpperTorso', 'HumanoidRootPart'}, Default = 1, Multi = false, Text = 'Aim Part'}):OnChanged(function(callback)
 Cheese2 = callback
 end)
- 
+
 --// Miscellaneous Tab
- 
+
 local CustomHitsoundsTabBox = Tabs.CombatTab:AddRightTabbox('Custom Hitsounds')
 local CustomHitsoundsTab = CustomHitsoundsTabBox:AddTab('Custom Hitsounds')
- 
+
 SoundService.PlayerHitHeadshot.Volume = 5
 SoundService.PlayerHitHeadshot.Pitch = 1
 SoundService.PlayerHitHeadshot.EqualizerSoundEffect.HighGain = -2
- 
+
 CustomHitsoundsTab:AddToggle('Enabled_Toggle', {Text = 'Enabled', Default = false})
- 
+
 CustomHitsoundsTab:AddDropdown('HeadshotHit', {
 Values = { 'Default', 'Gamesense', 'CS:GO', 'Among Us', 'Neverlose', 'TF2 Critical', 'Mario', 'Rust', 'Call of Duty', 'Steve', 'Bamboo', 'Minecraft', 'TF2', },
 Default = 1,
@@ -478,82 +478,82 @@ if Options.HeadshotHit.Value == "Default" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://9119561046"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Gamesense" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://4817809188"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "CS:GO" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://6937353691"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Among Us" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://5700183626"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Neverlose" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://8726881116"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "TF2 Critical" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://296102734"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Mario" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://2815207981"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Rust" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://1255040462"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Call of Duty" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://5952120301"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Steve" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://4965083997"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Bamboo" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://3769434519"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 if Options.HeadshotHit.Value == "Minecraft" then
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://4018616850"
 game:GetService("SoundService").PlayerHitHeadshot.Playing = true
- 
+
 if Options.HeadshotHit.Value == "TF2" then
   game:GetService("SoundService").PlayerHitHeadshot.SoundId = "rbxassetid://2868331684"
   game:GetService("SoundService").PlayerHitHeadshot.Playing = true
 end
- 
+
 end
 end)
- 
+
 CustomHitsoundsTab:AddSlider('Volume_Slider', {Text = 'Volume', Default = 5, Min = 0, Max = 10, Rounding = 1, Compact = true,}):OnChanged(function(vol)
 SoundService.PlayerHitHeadshot.Volume = vol
 end)
- 
+
 CustomHitsoundsTab:AddSlider('Pitch_Slider', {Text = 'Volume', Default = 1, Min = 0, Max = 2, Rounding = 1, Compact = true,}):OnChanged(function(pich)
 SoundService.PlayerHitHeadshot.Pitch = pich
 end)
- 
+
 CustomHitsoundsTab:AddInput('HeadshotPlaceHolder', {Default = 'rbxassetid://', Numeric = false, Finished = false, Text = 'Custom Hitsound', Placeholder = 'rbxassetid://'})
 game:GetService("SoundService").PlayerHitHeadshot.SoundId = Options.HeadshotPlaceHolder.Value
- 
+
 CustomHitsoundsTab:AddToggle('Enabled_Toggle', {Text = 'Enabled', Default = false})
- 
+
 CustomHitsoundsTab:AddDropdown('Hit', {
 Values = { 'Default', 'Gamesense', 'CS:GO', 'Among Us', 'Neverlose', 'TF2 Critical', 'Mario', 'Rust', 'Call of Duty', 'Steve', 'Bamboo', 'Minecraft', 'TF2', },
 Default = 1,
@@ -566,104 +566,104 @@ if Options.Hit.Value == "Default" then
 SoundService.PlayerHit2.SoundId = "rbxassetid://9114487369"
 SoundService.PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Gamesense" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://4817809188"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "CS:GO" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://6937353691"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Among Us" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://5700183626"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Neverlose" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://8726881116"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "TF2 Critical" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://296102734"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Mario" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://2815207981"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Rust" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://1255040462"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Call of Duty" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://5952120301"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Steve" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://4965083997"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Bamboo" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://3769434519"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "Minecraft" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://4018616850"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
- 
+
 if Options.Hit.Value == "TF2" then
 game:GetService("SoundService").PlayerHit2.SoundId = "rbxassetid://2868331684"
 game:GetService("SoundService").PlayerHit2.Playing = true
 end
 end)
- 
+
 CustomHitsoundsTab:AddSlider('Volume_Slider', {Text = 'Volume', Default = 5, Min = 0, Max = 10, Rounding = 1, Compact = true,}):OnChanged(function(vole)
 SoundService.PlayerHit2.Volume = vole
 end)
- 
+
 CustomHitsoundsTab:AddSlider('Pitch_Slider', {Text = 'Volume', Default = 1, Min = 0, Max = 2, Rounding = 1, Compact = true,}):OnChanged(function(piche)
 SoundService.PlayerHit2.Pitch = piche
 end)
- 
+
 CustomHitsoundsTab:AddInput('BodyHitPlaecHolder', {Default = 'rbxassetid://', Numeric = false, Finished = false, Text = 'Custom Hitsounds', Placeholder = 'rbxassetid://'})
 game:GetService("SoundService").PlayerHit2.SoundId = Options.BodyHitPlaecHolder.Value
- 
+
 --// Bullet Modifications
- 
+
 local GunmodsTabBox = Tabs.CombatTab:AddLeftTabbox('Bullet Tracers')
 local GunModsTab = GunmodsTabBox:AddTab('Bullet Tracers')
- 
+
 GunModsTab:AddToggle('Bob1231', {
 Text = "Enabled",
 Default = false,
 Tooltip = "Enables Bullet Mods",
 }):OnChanged(function()
 end)
- 
+
 GunModsTab:AddSlider('Trail_Lifetime', {Text = 'Lifetime', Suffix = "%", Default = 0.15, Min = 0.15, Max = 20, Rounding = 2, Compact = true}):OnChanged(function(a2trappy)
 game:GetService("ReplicatedStorage").Arrow.Trail.Lifetime = a2trappy
 game:GetService("ReplicatedStorage").Bullet.Trail.Lifetime = a2trappy
 game:GetService("ReplicatedStorage").Laser.Trail.Lifetime = a2trappy
 end)
- 
+
 --* Hitbox Expander *--
- 
+
 local PlayerModsTabBox = Tabs.CombatTab:AddLeftTabbox('Hitbox Expander')
 local PlayerModsTab = PlayerModsTabBox:AddTab('Hitbox Expander')
- 
+
 --// Player Mods
- 
+
 local HedsOn = Instance.new("Part")
 HedsOn.Name = "HedsOn"
 HedsOn.Anchored = false
@@ -671,12 +671,12 @@ HedsOn.CanCollide = false
 HedsOn.Transparency = 1
 HedsOn.Size = Vector3.new(4, 7, 3)
 HedsOn.Parent = game.ReplicatedStorage
- 
+
 local HTTransparency = 1
 local XSize = 2.5
 local YSize = 7.5
 local ZSize = 2.5
- 
+
 PlayerModsTab:AddToggle('Bht', {
 Text = 'Hitbox Expander',
 Default = false,
@@ -695,19 +695,19 @@ for v, i in pairs(game:GetService("Workspace"):GetChildren()) do
           BigHeadsPart.CanCollide = false
           BigHeadsPart.Transparency = HTTransparency
           BigHeadsPart.Size = Vector3.new(XSize, YSize, ZSize)
- 
+
           local HeadsParts = BigHeadsPart:Clone()
           HeadsParts.Parent = i
           HeadsParts.Orientation = i.HumanoidRootPart.Orientation
- 
+
           local HedsOn = HedsOn:Clone()
           HedsOn.Parent = i
- 
+
           local Headswelding = Instance.new("Weld")
           Headswelding.Parent = HeadsParts
           Headswelding.Part0 = i.HumanoidRootPart
           Headswelding.Part1 = HeadsParts
- 
+
           HeadsParts.Position = Vector3.new(i.HumanoidRootPart.Position.X,i.HumanoidRootPart.Position.Y - 0.4, i.HumanoidRootPart.Position.Z)
         end
       end
@@ -735,27 +735,27 @@ if HeadExtends == false then
 end
 end
 end)
- 
+
 PlayerModsTab:AddSlider('Transparency_Slider', {Text = 'Transparency', Suffix = "%", Default = 1, Min = 0, Max = 1, Rounding = 1, Compact = true,}):OnChanged(function(HT)
 HTTransparency = HT
 end)
- 
+
 PlayerModsTab:AddSlider('XSize_Slider', {Text = 'Horizontal Size', Suffix = "studs", Default = 2.5, Min = 0, Max = 2.5, Rounding = 1, Compact = true,}):OnChanged(function(t)
 XSize = t
 end)
- 
+
 PlayerModsTab:AddSlider('YSize_Slider', {Text = 'Vertical Size', Suffix = "studs", Default = 5, Min = 0, Max = 5, Rounding = 1, Compact = true,}):OnChanged(function(t)
 YSize = t
 end)
- 
+
 PlayerModsTab:AddSlider('ZSize_Slider', {Text = 'Width Size', Suffix = "studs", Default = 2.5, Min = 0, Max = 2.5, Rounding = 1, Compact = true,}):OnChanged(function(t)
 ZSize = t
 end)
- 
+
 --* Functions, scripts, other *--
- 
+
 --// Ore Esp
- 
+
 if game.PlaceId ~= 9570110925 then
 print("Incorrect Game")
 return
@@ -797,8 +797,8 @@ function()
       drawing_text.Visible = false
       rendersteploop:Disconnect()
     end
- 
- 
+
+
     drawing_text.Visible = true
     drawing_text.Text = text
     drawing_text.Position = screen_pos
@@ -809,7 +809,7 @@ end
 )
 end
 local function filter_models(v)
- 
+
 if (not v:IsA("Model")) then
   return
 end
@@ -837,15 +837,15 @@ end
 for index, model in pairs(workspace:GetChildren()) do
 filter_models(model)
 end
- 
+
 workspace.ChildAdded:Connect(
 function(model)
 filter_models(model)
 end
 )
- 
+
 -- Military Crates </>
- 
+
 local parts = workspace:GetDescendants()
 local meshes = {}
 for _, part in ipairs(parts) do
@@ -860,7 +860,7 @@ if part:IsA("Part") and part.BrickColor == BrickColor.new("Medium green") and pa
   MilitaryEsp.Parent = workspace
 end
 end
- 
+
 local function onPartAdded(part)
 if part:IsA("Part") and part.BrickColor == BrickColor.new("Medium green") and part.Material == Enum.Material.WoodPlanks then
   local UpdateMilitaryEsp = Instance.new("BoxHandleAdornment")
@@ -874,9 +874,9 @@ if part:IsA("Part") and part.BrickColor == BrickColor.new("Medium green") and pa
 end
 end
 workspace.DescendantAdded:Connect(onPartAdded)
- 
+
 -- Part Crates </>
- 
+
 local parts = workspace:GetDescendants()
 local meshes = {}
 for _, part in ipairs(parts) do
@@ -891,7 +891,7 @@ if part:IsA("UnionOperation") and part.BrickColor == BrickColor.new("Cashmere") 
   PartCrateEsp.Parent = workspace
 end
 end
- 
+
 local function onPartAdded(part)
 if part:IsA("UnionOperation") and part.BrickColor == BrickColor.new("Cashmere") and part.Material == Enum.Material.Plastic then
   local UpdatePartCrateEsp = Instance.new("BoxHandleAdornment")
@@ -905,9 +905,9 @@ if part:IsA("UnionOperation") and part.BrickColor == BrickColor.new("Cashmere") 
 end
 end
 workspace.DescendantAdded:Connect(onPartAdded)
- 
+
 -- Vending Machine </>
- 
+
 local parts = workspace:GetDescendants()
 local meshes = {}
 for _, part in ipairs(parts) do
@@ -922,7 +922,7 @@ if part:IsA("UnionOperation") and part.BrickColor == BrickColor.new("Medium brow
   VendingMachineEsp.Parent = workspace
 end
 end
- 
+
 local function onPartAdded(part)
 if part:IsA("UnionOperation") and part.BrickColor == BrickColor.new("Medium brown") and part.Material == Enum.Material.Plastic then
   local UpdateVendingMachineEsp = Instance.new("BoxHandleAdornment")
@@ -936,13 +936,13 @@ if part:IsA("UnionOperation") and part.BrickColor == BrickColor.new("Medium brow
 end
 end
 workspace.DescendantAdded:Connect(onPartAdded)
- 
+
 -- TCs </>
- 
+
 local UserInputService = game:GetService("UserInputService")
 local TCESPs = {}
 local adorned = false
- 
+
 local function addAdornments()
 local parts = workspace:GetDescendants()
 for _, part in ipairs(parts) do
@@ -960,14 +960,14 @@ for _, part in ipairs(parts) do
   end
 end
 end
- 
+
 local function removeAdornments()
 for _, TCESP in ipairs(TCESPs) do
   TCESP:Destroy()
 end
 TCESPs = {}
 end
- 
+
 local function toggleAdornments()
 if adorned then
   removeAdornments()
@@ -977,23 +977,23 @@ else
   adorned = true
 end
 end
- 
+
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
 if input.KeyCode == Enum.KeyCode.Y and not gameProcessed then
 toggleAdornments()
 end
 end)
- 
+
 --------------------------------------------------------------------------------------------------
- 
+
 --Visuals Shit
 local VisualsTabBox = Tabs.VisualsTab:AddLeftTabbox('Player Visuals')
 local PlayerESPTab = VisualsTabBox:AddTab('Enemies')
 local GameESPTab = VisualsTabBox:AddTab('Game')
 local PlayerESPSettingsTab = VisualsTabBox:AddTab('Settings')
- 
+
 getgenv().EnabledCombatWeapons = nil
- 
+
 PlayerESPTab:AddToggle('Enabled69', {
 Text = 'Enabled',
 Default = false, -- Default value (true / false)
@@ -1001,14 +1001,14 @@ Tooltip = 'Enables ESP', -- Information shown when you hover over the toggle
 EnabledCombatWeapons = CombatWeapons
 }):OnChanged(function(CombatWeapons)
 end)
- 
+
 PlayerESPTab:AddSlider('Esp_Distancce', {Text = 'Distance:', Suffix = "studs", Default = 1000, Min = 0, Max = 10000, Rounding = 0, Compact = true}):OnChanged(function()
 if CombatWeapons then
 end
 end)
- 
+
 --// Player Visuals \\--
- 
+
 PlayerESPTab:AddToggle('Proximi123',{
 Text = 'Player',
 Default = false,
@@ -1017,11 +1017,11 @@ Tooltip = 'Player ESP',
 Config.Esp.Names = x2trappy
 Config.Esp.NamesOutline = x2trappy
 end)
- 
+
 Options.NameEsp_Color:OnChanged(function(p_state)
 Config.Esp.NamesColor = p_state
 end)
- 
+
 PlayerESPTab:AddToggle('Ezas1231',{
 Text = 'Box',
 Default = false,
@@ -1029,11 +1029,11 @@ Tooltip = 'Box ESP',
 }):AddColorPicker("BoxEsp_Color", {Default = Color3.fromRGB(255,255,255)}):OnChanged(function(xix)
 Config.Esp.Box = xix
 end)
- 
+
 Options.BoxEsp_Color:OnChanged(function(p_state69)
 Config.Esp.BoxColor = p_state69
 end)
- 
+
 PlayerESPTab:AddToggle('SussyJohn123',{
 Text = 'Filled Box',
 Default = false,
@@ -1041,16 +1041,16 @@ Tooltip = 'Fills Boxes',
 }):OnChanged(function(x)
 Config.Esp.BoxFilled = x
 end)
- 
+
 PlayerESPTab:AddSlider('BOX_Transparency', {Text = 'Transparency', Suffix = "%", Default = 1, Min = 0, Max = 1, Rounding = 2, Compact = true}):OnChanged(function(a2trappy)
 Config.Esp.BoxTransparency = a2trappy
 end)
- 
+
 --// Skeleton ESP \\--
- 
+
 local SkeletonColor = Color3.fromRGB(225, 225, 225) -- put your color changer stuff here
 local Skeletons = nil
- 
+
 PlayerESPTab:AddToggle('MyToggle', {
 Text = 'Skeleton',
 Default = false, -- Default value (true / false)
@@ -1062,10 +1062,10 @@ Title = 'Color',
 Options.SkeletonColor:OnChanged(function(Color)
 SkeletonColor = Color
 end)
- 
+
 local camera = workspace.CurrentCamera
 local function DrawDrop(drop)
- 
+
 local DropText = Drawing.new("Line")
 DropText.Visible = false
 DropText.From = Vector2.new(0, 0)
@@ -1144,7 +1144,7 @@ DropText12.From = Vector2.new(0, 0)
 DropText12.To = Vector2.new(0, 0)
 DropText12.Color = SkeletonColor
 DropText12.Thickness = 1
- 
+
 local function UPDATER()
 local c
 c = game:GetService("RunService").RenderStepped:Connect(function()
@@ -1260,38 +1260,38 @@ if drop:FindFirstChild("Head") and drop:FindFirstChild("RightFoot") then
 coroutine.wrap(DrawDrop)(drop)
 end
 end
- 
+
 workspace.ChildAdded:Connect(function(drop)
 if drop:FindFirstChild("Head") and drop:FindFirstChild("RightFoot") then
 coroutine.wrap(DrawDrop)(drop)
 end
 end)
- 
+
 --// Chams
- 
+
 local function isR15Part(part)
 if not part:IsA("BasePart") then
 return false
 end
- 
+
 local humanoid = part.Parent:FindFirstChildWhichIsA("Humanoid")
 if not humanoid then
 return false
 end
- 
+
 local rigType = humanoid.RigType
 if rigType ~= Enum.HumanoidRigType.R15 then
 return false
 end
- 
+
 local ignoreFolder = workspace:FindFirstChild("Ignore")
 if ignoreFolder and part:IsDescendantOf(ignoreFolder) then
 return false
 end
- 
+
 return true
 end
- 
+
 local function adornPart(part)
 local adornment = Instance.new("BoxHandleAdornment")
 adornment.Adornee = part
@@ -1303,13 +1303,13 @@ adornment.Transparency = 0.6
 adornment.Name = 'esp_part'
 adornment.Parent = part
 end
- 
+
 local function onDescendantAdded(descendant)
 if isR15Part(descendant) then
 adornPart(descendant)
 end
 end
- 
+
 local function adornR15Parts()
 local parts = workspace:GetDescendants()
 for _, part in ipairs(parts) do
@@ -1318,7 +1318,7 @@ if isR15Part(part) then
 end
 end
 end
- 
+
 local function remove()
 local parts = workspace:GetDescendants()
 for _, part in ipairs(parts) do
@@ -1327,8 +1327,8 @@ if part.Name == 'esp_part' then
 end
 end
 end
- 
- 
+
+
 PlayerESPTab:AddToggle('ESP', {Text = 'Chams', Default = false}):AddColorPicker("Chams_COlor", {Default = Color3.fromRGB(255, 255, 255)}):OnChanged(function(boolean)
 if boolean then
 adornR15Parts()
@@ -1336,25 +1336,25 @@ else
 remove()
 end
 end)
- 
+
 game.Workspace.DescendantAdded:Connect(function(v)
 if Toggles.ESP.Value then
 onDescendantAdded(v)
 end
 end)
- 
+
 --* Ore ESP *--
- 
+
 GameESPTab:AddToggle('ORE_ESP', {Text = 'Ore', Default = false}):OnChanged(function(x)
 _G.Shitter = x
 end)
- 
+
 --* Settings *--
- 
+
 PlayerESPTab:AddDivider()
- 
+
 --// Settings \\--
- 
+
 PlayerESPTab:AddToggle('rainbow_esp', {Text = 'Rainbow', Default = false}):OnChanged(function(xpoo12)
 if xpoo12 == true then
 game:GetService('RunService'):BindToRenderStep("Rainbow", 0 , function()
@@ -1371,7 +1371,7 @@ Config.Esp.HealthBarColor = Color3.fromRGB(255,255,255)
 Config.Esp.NamesColor = Color3.fromRGB(255,255,255)
 end
 end)
- 
+
 PlayerESPTab:AddToggle('NameOutlines', {Text = 'Show Outlines', Default = true}):OnChanged(function(NameOutlines)
 if NameOutlines == true then
 Config.Esp.NamesOutline = true
@@ -1379,7 +1379,7 @@ elseif NameOutlines == false then
 Config.Esp.NamesOutline = false
 end
 end)
- 
+
 PlayerESPSettingsTab:AddToggle('zzzEzas1121231',{
 Text = 'Box Outline',
 Default = false,
@@ -1387,11 +1387,11 @@ Tooltip = 'Box Outline',
 }):AddColorPicker("BoxEsp_OutlineColor", {Default = Color3.fromRGB(0,0,0)}):OnChanged(function(xix)
 Config.Esp.BoxOutline = xix
 end)
- 
+
 PlayerESPSettingsTab:AddSlider('PlayerESP_FontSize', {Text = 'Font Size', Default = 11, Min = 0, Max = 100, Rounding = 0, Compact = false}):OnChanged(function(sussystuff1)
 Config.Esp.NamesSize = sussystuff1
 end)
- 
+
 PlayerESPSettingsTab:AddDropdown('PlayerESP_FontFamily', {Values = { 'UI', 'System', 'Plex', 'Monospace' }, Default = 3, Multi = false, Text = 'Font Family'}):OnChanged(function()
 if Options.PlayerESP_FontFamily.Value == "UI" then
 Config.Esp.NamesFont = 1
@@ -1403,13 +1403,13 @@ elseif Options.PlayerESP_FontFamily.Value == "Monospace" then
 Config.Esp.NamesFont = 4
 end
 end)
- 
+
 --* Crosshair 1 *--
- 
+
 local CrosshairTabBox = Tabs.VisualsTab:AddRightTabbox('Crosshairs')
 local CrosshairXTab = CrosshairTabBox:AddTab('Crosshair 1')
 local Crosshair69Tab = CrosshairTabBox:AddTab('Crosshair 2')
- 
+
 --// Crosshair 1
 local CrossHairX = Drawing.new("Circle")
 CrossHairX.Position = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2)
@@ -1420,23 +1420,23 @@ CrossHairX.NumSides = 64
 CrossHairX.Radius = 4
 CrossHairX.Visible = false
 CrossHairX.Filled = false
- 
+
 do
 CrosshairXTab:AddToggle('zCrosshairX_Toggle', {Text = 'Toggle', Default = false}):AddColorPicker("eCrosshairX_Color", {Default = Color3.fromRGB(98, 37, 209)}):OnChanged(function()
 CrossHairX.Visible = Toggles.zCrosshairX_Toggle.Value
 CrossHairX.Visible = Toggles.zCrosshairX_Toggle.Value
 end)
- 
+
 Options.eCrosshairX_Color:OnChanged(function()
 CrossHairX.Color = Options.eCrosshairX_Color.Value
 CrossHairX.Color = Options.eCrosshairX_Color.Value
 end)
- 
+
 CrosshairXTab:AddToggle('Crosshair_Filled1', {Text = 'Filled', Default = false}):OnChanged(function()
 CrossHairX.Filled = Toggles.Crosshair_Filled1.Value
 CrossHairX.Filled = Toggles.Crosshair_Filled1.Value
 end)
- 
+
 CrosshairXTab:AddToggle('Rainbow_Crosshair1', {Text = 'Rainbow', Default = false}):OnChanged(function(rbcrosshair1)
 if rbcrosshair1 == true then
 game:GetService('RunService'):BindToRenderStep("Rainbow2", 0 , function()
@@ -1449,26 +1449,26 @@ game:GetService('RunService'):UnbindFromRenderStep("Rainbow2")
 CrossHairX.Color = Color3.fromRGB(98, 37, 209)
 end
 end)
- 
+
 CrosshairXTab:AddSlider('Crosshair_Radius', {Text = 'Size', Suffix = "px", Default = 3, Min = 0, Max = 100, Rounding = 0, Compact = true}):OnChanged(function(CrosshairXRadius)
 CrossHairX.Radius = CrosshairXRadius
 end)
- 
+
 CrosshairXTab:AddSlider('Crosshair_Sides', {Text = 'Sides', Suffix = "°", Default = 64, Min = 0, Max = 64, Rounding = 0, Compact = true}):OnChanged(function(CrossHairXNumSides)
 CrossHairX.NumSides = CrossHairXNumSides
 end)
- 
+
 CrosshairXTab:AddSlider('Crosshair_Thickness', {Text = 'Thickness', Suffix = "°", Default = 0, Min = 0, Max = 25, Rounding = 0, Compact = true}):OnChanged(function(CrossHairXThickness)
 CrossHairX.Thickness = CrossHairXThickness
 end)
- 
+
 CrosshairXTab:AddSlider('Crosshair_Transparency1', {Text = 'Transparency', Suffix = "%", Default = 1, Min = 0, Max = 1, Rounding = 2, Compact = true}):OnChanged(function()
 CrossHairX.Transparency = Options.Crosshair_Transparency1.Value
 end)
 end
- 
+
 --* Crosshair 2 *--
- 
+
 --// Crosshair 2
 local Crosshair_Horizontal = drawing_new("Line")
 Crosshair_Horizontal.Visible = false
@@ -1477,7 +1477,7 @@ Crosshair_Horizontal.Transparency = 1
 Crosshair_Horizontal.From = vector2_new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
 Crosshair_Horizontal.To = vector2_new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
 Crosshair_Horizontal.Color = color3_fromrgb(255, 0, 0)
- 
+
 local Crosshair_Vertical = drawing_new("Line")
 Crosshair_Vertical.Visible = false
 Crosshair_Vertical.Thickness = 1
@@ -1490,12 +1490,12 @@ Crosshair69Tab:AddToggle('Crosshair_Toggle', {Text = 'Toggle', Default = false})
 Crosshair_Horizontal.Visible = Toggles.Crosshair_Toggle.Value
 Crosshair_Vertical.Visible = Toggles.Crosshair_Toggle.Value
 end)
- 
+
 Options.Crosshair_Color:OnChanged(function()
 Crosshair_Horizontal.Color = Options.Crosshair_Color.Value
 Crosshair_Vertical.Color = Options.Crosshair_Color.Value
 end)
- 
+
 Crosshair69Tab:AddToggle('Rainbow_Crosshair', {Text = 'Rainbow', Default = false}):OnChanged(function(rbcrosshair)
 if rbcrosshair == true then
 game:GetService('RunService'):BindToRenderStep("Rainbow2", 0 , function()
@@ -1510,35 +1510,35 @@ Crosshair_Horizontal.Color = Color3.fromRGB(255, 0, 0)
 Crosshair_Vertical.Color = Color3.fromRGB(255, 0, 0)
 end
 end)
- 
+
 Crosshair69Tab:AddSlider('Crosshair_Size', {Text = 'Size', Suffix = "px", Default = 2.2, Min = 0, Max = 100, Rounding = 1, Compact = true}):OnChanged(function()
 Crosshair_Horizontal.From = vector2_new(camera.ViewportSize.X / 2 - Options.Crosshair_Size.Value, camera.ViewportSize.Y / 2)
 Crosshair_Horizontal.To = vector2_new(camera.ViewportSize.X / 2 + Options.Crosshair_Size.Value, camera.ViewportSize.Y / 2)
 Crosshair_Vertical.From = vector2_new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2 - Options.Crosshair_Size.Value)
 Crosshair_Vertical.To = vector2_new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2 + Options.Crosshair_Size.Value)
 end)
- 
+
 Crosshair69Tab:AddSlider('Crosshair_Thickness', {Text = 'Thickness', Suffix = "px", Default = 2, Min = 0.5, Max = 25, Rounding = 1, Compact = true}):OnChanged(function()
 Crosshair_Horizontal.Thickness = Options.Crosshair_Thickness.Value
 Crosshair_Vertical.Thickness = Options.Crosshair_Thickness.Value
 end)
- 
+
 Crosshair69Tab:AddSlider('Crosshair_Transparency', {Text = 'Transparency', Suffix = "%", Default = 1, Min = 0, Max = 1, Rounding = 2, Compact = true}):OnChanged(function()
 Crosshair_Horizontal.Transparency = Options.Crosshair_Transparency.Value
 Crosshair_Vertical.Transparency = Options.Crosshair_Transparency.Value
 end)
 end
- 
+
 --* Field of View *--
- 
+
 local FieldOfViewTabBox = Tabs.VisualsTab:AddRightTabbox('Field of View')
 local FieldOfViewTab = FieldOfViewTabBox:AddTab('Field of View')
- 
+
 --Camera Tab
 do
 FieldOfViewTab:AddToggle('Camera_FOVToggle', {Text = 'Field of View', Default = false})
 FieldOfViewTab:AddSlider('Camera_FOVValue', {Text = 'FOV: ', Default = 70, Min = 0, Max = 120, Rounding = 0, Compact = true})
- 
+
 Toggles.Camera_FOVToggle:OnChanged(function()
 if Toggles.Camera_FOVToggle.Value then
 camera.FieldOfView = Options.Camera_FOVValue.Value
@@ -1546,37 +1546,37 @@ else
 camera.FieldOfView = 70
 end
 end)
- 
+
 Options.Camera_FOVValue:OnChanged(function()
 if Toggles.Camera_FOVToggle.Value then
 camera.FieldOfView = Options.Camera_FOVValue.Value
 end
 end)
- 
+
 FieldOfViewTab:AddToggle('Camera_ZoomToggle', {Text = 'Enable Zoom', Default = false}):AddKeyPicker('Camera_ZoomHolding', {Default = 'Z', SyncToggleState = false, Mode = 'Hold', Text = 'Zoom Keybind', NoUI = false,})
 FieldOfViewTab:AddSlider('Camera_ZoomValue', {Text = 'Zoom FOV: ', Default = 30, Min = 0, Max = 120, Rounding = 0, Compact = true})
 end
- 
+
 LPH_NO_VIRTUALIZE(function()
 camera:GetPropertyChangedSignal("FieldOfView"):Connect(function()
 if Toggles.Camera_FOVToggle.Value then
 camera.FieldOfView = Options.Camera_FOVValue.Value
 end
- 
+
 if Toggles.Camera_ZoomToggle.Value and Options.Camera_ZoomHolding:GetState() then
 camera.FieldOfView = Options.Camera_ZoomValue.Value
 end
 end)
 end)()
- 
+
 --* Arm,Gun Vis *--
- 
+
 local ArmVisTabBox = Tabs.VisualsTab:AddLeftTabbox('Arm Visuals')
 local ArmVisTab = ArmVisTabBox:AddTab('Arm Visuals')
 local GunVisTab = ArmVisTabBox:AddTab('Gun Visuals')
- 
+
 --// Arm Visuals
- 
+
 ArmVisTab:AddButton('Set Default', function()
 game:GetService("Workspace").Ignore.FPSArms.RightUpperArm.BrickColor = BrickColor.new("Linen")
 game:GetService("Workspace").Ignore.FPSArms.RightLowerArm.BrickColor = BrickColor.new("Linen")
@@ -1586,9 +1586,9 @@ game:GetService("Workspace").Ignore.FPSArms.LeftLowerArm.BrickColor = BrickColor
 game:GetService("Workspace").Ignore.FPSArms.LeftHand.BrickColor = BrickColor.new("Linen")
 game:GetService("ReplicatedStorage").HandModels.HMAR.Handle.BrickColor = BrickColor.new("Cool yellow")
 end)
- 
+
 local CARMS = false
- 
+
 ArmVisTab:AddToggle('CLRT',{
 Text = 'Color Arms',
 Default = false,
@@ -1616,11 +1616,11 @@ game:GetService("Workspace").Ignore.FPSArms.LeftHand.BrickColor = BrickColor.new
 game:GetService("ReplicatedStorage").HandModels.HMAR.Handle.BrickColor = BrickColor.new("Cool yellow")
 end
 end)
- 
+
 Toggles.CLRT:OnChanged(function(T)
 CARMS = T
 end)
- 
+
 ArmVisTab:AddDropdown('MaterialD', {
 Values = { 'Default', 'ForceField', 'Neon', 'CrackedLava' },
 Default = 1,
@@ -1637,7 +1637,7 @@ game:GetService("Workspace").Ignore.FPSArms.LeftLowerArm.Material = "Plastic"
 game:GetService("Workspace").Ignore.FPSArms.LeftHand.Material = "Plastic"
 game:GetService("ReplicatedStorage").HandModels.HMAR.Handle.Material = "Plastic"
 end
- 
+
 if Options.MaterialD.Value == "ForceField" then
 game:GetService("Workspace").Ignore.FPSArms.RightUpperArm.Material = "ForceField"
 game:GetService("Workspace").Ignore.FPSArms.RightLowerArm.Material = "ForceField"
@@ -1647,7 +1647,7 @@ game:GetService("Workspace").Ignore.FPSArms.LeftLowerArm.Material = "ForceField"
 game:GetService("Workspace").Ignore.FPSArms.LeftHand.Material = "ForceField"
 game:GetService("ReplicatedStorage").HandModels.HMAR.Handle.Material = "ForceField"
 end
- 
+
 if Options.MaterialD.Value == "Neon" then
 game:GetService("Workspace").Ignore.FPSArms.RightUpperArm.Material = "Neon"
 game:GetService("Workspace").Ignore.FPSArms.RightLowerArm.Material = "Neon"
@@ -1657,7 +1657,7 @@ game:GetService("Workspace").Ignore.FPSArms.LeftLowerArm.Material = "Neon"
 game:GetService("Workspace").Ignore.FPSArms.LeftHand.Material = "Neon"
 game:GetService("ReplicatedStorage").HandModels.HMAR.Handle.Material = "Neon"
 end
- 
+
 if Options.MaterialD.Value == "CrackedLava" then
 game:GetService("Workspace").Ignore.FPSArms.RightUpperArm.Material = "CrackedLava"
 game:GetService("Workspace").Ignore.FPSArms.RightLowerArm.Material = "CrackedLava"
@@ -1668,9 +1668,9 @@ game:GetService("Workspace").Ignore.FPSArms.LeftHand.Material = "CrackedLava"
 game:GetService("ReplicatedStorage").HandModels.HMAR.Handle.Material = "CrackedLava"
 end
 end)
- 
+
 --// Gun Visuals
- 
+
 GunVisTab:AddButton('Set Default', function()
 -- material
 -- hmar
@@ -1740,9 +1740,9 @@ game:GetService("ReplicatedStorage").HandModels.BloxyCola.Handle.Material = Enum
 game:GetService("ReplicatedStorage").HandModels.HealingBandage.Bandage.Material = Enum.Material.Snow
 -- bandage
 game:GetService("ReplicatedStorage").HandModels.Bandage.Bandage.Material = Enum.Material.Snow
- 
+
 -- color
- 
+
 -- HMAR
 game:GetService("ReplicatedStorage").HandModels.HMAR.Barrel.BrickColor = BrickColor.new("Dark grey")
 game:GetService("ReplicatedStorage").HandModels.HMAR.Body.BrickColor = BrickColor.new("Dark stone grey")
@@ -1959,11 +1959,11 @@ game:GetService("ReplicatedStorage").HandModels.HealingBandage.Bandage.BrickColo
 game:GetService("ReplicatedStorage").HandModels.Bandage.Bandage.BrickColor = BrickColor.new("Khaki")
 end
 end)
- 
+
 Toggles.Tgc:OnChanged(function(Toggle)
 GCTG = Toggle
 end)
- 
+
 GunVisTab:AddDropdown('MaterialV', {
 Values = { 'Default', 'ForceField', 'Neon', 'CrackedLava' },
 Default = 1,
@@ -2246,16 +2246,16 @@ game:GetService("ReplicatedStorage").HandModels.HealingBandage.Bandage.Material 
 game:GetService("ReplicatedStorage").HandModels.Bandage.Bandage.Material = Enum.Material.CrackedLava
 end
 end)
- 
+
 --* Custom Skybox *--
- 
+
 local CustomSkyTabBox = Tabs.VisualsTab:AddRightTabbox('Custom Sky')
 local CustomSkyTab = CustomSkyTabBox:AddTab('Custom Sky')
- 
+
 local Socolo = Instance.new("Sky",game:GetService("Lighting"))
- 
+
 getgenv().Enabled1 = nil
- 
+
 CustomSkyTab:AddToggle('AWASZnfh', {
 Text = "Enabled",
 Default = false,
@@ -2263,7 +2263,7 @@ Tooltip = "Enables SkyTab",
 }):OnChanged(function(SKYB)
 Enabled1 = SKYB
 end)
- 
+
 Socolo.Name = "Custom Skybox"
 CustomSkyTab:AddDropdown('SkyC', {
 Values = { 'Default', 'Sponge Bob', 'Vaporwave', 'Clouds', 'Twilight', 'Chill', 'Minecraft', 'Among Us', 'Redshift', 'Aesthetic Night', 'Neptune', 'Galaxy'},
@@ -2272,7 +2272,7 @@ Multi = false,
 Text = 'Custom Skybox',
 Tooltip = 'Sky Changer',
 })
- 
+
 Options.SkyC:OnChanged(function(HOMO)
 if Enabled1 then
 if HOMO == "Default" then
@@ -2364,14 +2364,14 @@ Socolo.StarCount = 5000
 end
 end
 end)
- 
+
 --| World Lighting Main |--
- 
+
 local WorldLightingTabBox = Tabs.VisualsTab:AddLeftTabbox('Extra')
 local WorldTab = WorldLightingTabBox:AddTab('Extra')
- 
+
 --// World
- 
+
 WorldTab:AddToggle('AWnfh', {
 Text = "Loot All",
 Default = false,
@@ -2479,7 +2479,7 @@ local ohBoolean3 = true
 game:GetService("Players").LocalPlayer.PlayerGui.RemoteEvent:FireServer(ohNumber1, ohNumber2, ohBoolean3)
 end)
 end)
- 
+
 WorldTab:AddToggle('AWAaSZasanfh', {
 Text = "Hide Fps Watermark",
 Default = false,
@@ -2491,7 +2491,7 @@ elseif BaaasaE1 == false then
 game:GetService("Players").LocalPlayer.PlayerGui.UI.ServerStatus.Visible = true
 end
 end)
- 
+
 WorldTab:AddToggle('AWASZnfh', {
 Text = "Hide Server Info",
 Default = false,
@@ -2503,7 +2503,7 @@ elseif BaE1 == false then
 game:GetService("Players").LocalPlayer.PlayerGui.UI.ServerInfo.Visible = true
 end
 end)
- 
+
 local MyButton = WorldTab:AddButton('Admin / Mod Detector', function()
 local function detect(v)
 local rank = v:GetRoleInGroup(9225381)
@@ -2521,107 +2521,107 @@ Duration = 30
 })
 end
 end
- 
+
 for i,v in next, game.Players:GetPlayers() do
 task.spawn(detect, v)
 end
- 
+
 game.Players.PlayerAdded:connect(function(p)
 task.spawn(detect, p)
 end)
 end)
- 
+
 -------------------------------------------------------------------------------------------------
- 
+
 --* UI Settings Tab *--
- 
+
 Library:OnUnload(function()
 for i,v in pairs(Toggles) do
 v.Value = false
 end
 Library.Unloaded = true
 end)
- 
+
 local GameID = Tabs.UISettings:AddLeftGroupbox('Game')
 GameID:AddInput('GameID_Check', {Default = 'Game ID', Numeric = true, Finished = false, Text = 'Game ID', Placeholder = 'Game ID Here'})
- 
+
 GameID:AddButton('Join Game', function()
 game:GetService("TeleportService"):Teleport(Options.GameID_Check.Value, plr)
 end)
- 
+
 local MenuGroup = Tabs.UISettings:AddRightGroupbox('Menu')
- 
+
 MenuGroup:AddLabel(""..game:GetService("Players").LocalPlayer.PlayerGui.UI.ServerInfo.Text.."", true)
- 
+
 MenuGroup:AddLabel('Credits:\n<font color="#de6cff">Made By Ea Scripts </font> 👑', true)
- 
+
 MenuGroup:AddButton('Unload Script', function() Library:Unload() end)
- 
+
 MenuGroup:AddButton('Panic Button', function()
 for i,v in pairs(Toggles) do
 v:SetValue(false)
 end
 end)
- 
+
 MenuGroup:AddButton('Rejoin Server', function()
 local Rejoin = coroutine.create(function()
 local Success, ErrorMessage = pcall(function()
 game:GetService("TeleportService"):Teleport(game.PlaceId, plr)
 end)
- 
+
 if ErrorMessage and not Success then
 warn(ErrorMessage)
 end
 end)
- 
+
 coroutine.resume(Rejoin)
 end)
- 
+
 MenuGroup:AddButton('Copy discord', function()
 if pcall(setclipboard,"https://discord.gg/8rSThDKm") then
 Library:Notify('Successfully copied discord link to your clipboard!', 5)
 end
 end)
 MenuGroup:AddDivider()
- 
+
 MenuGroup:AddToggle('UISettings_KeybindFrameVisibility', {Text = 'Show Keybind Frame', Default = true}):OnChanged(function()
 Library.KeybindFrame.Visible = Toggles.UISettings_KeybindFrameVisibility.Value
 end)
- 
+
 MenuGroup:AddToggle('WatermarkToggle', {Text = 'Watermark', Default = true, Tooltip = nil, })
- 
+
 MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'RightControl', NoUI = true, Text = 'Menu keybind' })
 Library.ToggleKeybind = Options.MenuKeybind
 SaveManager:SetLibrary(Library)
 SaveManager:SetFolder('Ea scripts/Folder')
 SaveManager:BuildConfigSection(Tabs.UISettings)
- 
+
 --// Theme Editor
- 
+
 ThemeManager:SetLibrary(Library)
 SaveManager:IgnoreThemeSettings()
-ThemeManager:SetFolder('beamedsolutions/Themes')
+ThemeManager:SetFolder('Easolutions/Themes')
 ThemeManager:ApplyToTab(Tabs.UISettings)
- 
+
 Library:SetWatermarkVisibility(true)
- 
+
 frames = 0
- 
+
 local RunService = game:GetService("RunService")
 RunService.RenderStepped:Connect(function(step)
 frames = math.floor(1/step).." fps"
 end)
- 
+
 spawn(function()
 while true do
 Toggles.WatermarkToggle:OnChanged(function()
-while Toggles.WatermarkToggle.Value do task.wait(0.1) Library:SetWatermark(os.date("beamed.solutions - " .. frames .." | ".."%X".."%p | "..GameName.."")) Library:SetWatermarkVisibility(Toggles.WatermarkToggle.Value) end end)
+while Toggles.WatermarkToggle.Value do task.wait(0.1) Library:SetWatermark(os.date("Ea.solutions - " .. frames .." | ".."%X".."%p | "..GameName.."")) Library:SetWatermarkVisibility(Toggles.WatermarkToggle.Value) end end)
 Library:SetWatermarkVisibility(false)
 wait()
 end
 end)
- 
- 
- 
+
+
+
 --Wrapping function - needed to unload(Keep at end of script)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EIOlmqV6v1owgJBEoqj5lK9p01SFE2THpxcOnvX/LinoriaBurnEdition/main/LoaderManager.lua'))() 
