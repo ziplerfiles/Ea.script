@@ -63,7 +63,7 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/yuh95/Yuri-X/main/So
 
 notifications:message{
     Title = "ETR <font color='rgb(148, 0, 211)'>X</font> - v22.0",
-    Description = "Aimlock Loaded, Keybind 'E'.",
+    Description = "Aimlock Loaded, Keybind 'Q'.",
     Icon = 6023426926
 }
 
